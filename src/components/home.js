@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Layout, Menu } from 'antd';
-import MenuComp from './MenuComp';
+import { Layout } from 'antd';
 import HeaderComp from './Header';
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 const Home = () => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const handleMenuItemClick = (e) => {

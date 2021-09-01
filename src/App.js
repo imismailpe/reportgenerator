@@ -1,6 +1,6 @@
 import 'antd/dist/antd.css';
 import './App.css';
-import Home from './components/Home';
+import Home from './components/home';
 
 function App() {
   return (
