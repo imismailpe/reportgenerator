@@ -17,7 +17,9 @@ code {
   margin: 16px;
   background: rgba(255, 255, 255, 0.2);
 }
-
+.ant-layout.ant-layout-has-sider{
+  height: 100vh;
+}
 .site-layout-sub-header-background {
   background: #fff;
 }

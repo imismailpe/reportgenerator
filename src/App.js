@@ -37,7 +37,7 @@ function App() {
         <Layout>
           <Header className="site-layout-sub-header-background whiteText" style={{ padding: 0 }}>Report generator</Header>
           <Content style={{ margin: '24px 16px 0' }}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+            <div className="site-layout-background" style={{ padding: 24, height: '100%' }}>
               content
             </div>
           </Content>
