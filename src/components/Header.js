@@ -1,7 +1,7 @@
 import { Button } from 'antd';
 import React from 'react';
 import MenuComp from './MenuComp';
-import { MenuOutlined } from '@ant-design/icons';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 
 const HeaderComp = (props) => {
     return (
@@ -11,6 +11,9 @@ const HeaderComp = (props) => {
             <div className='absoluteL'>
                 <Button className='menuButton' onClick={props.toggleMenu}
                     icon={<MenuOutlined style={{ fontSize: '20px', color: '#1890ff' }} />}></Button>
+            </div>
+            <div className='absoluteR'>
+                <UserOutlined className='userIconContainer'/>
             </div>
             <div className='headerTitle'>Report Generator</div>
 
