@@ -17,7 +17,7 @@ const Home = () => {
                 <HeaderComp isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} handleMenuItemClick={handleMenuItemClick} />
             </Header>
             <Content style={{ margin: '24px 16px 0', height: '100%' }}>
-                <div className="site-layout-background" style={{ padding: 24, height: '100%' }}>
+                <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                     content
                 </div>
             </Content>
