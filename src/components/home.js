@@ -24,6 +24,7 @@ const Home = () => {
             })
             .catch(err => {
                 console.log(err);
+                message.error(`${err}`);
                 setLoading(false);
             })
     }
@@ -41,6 +42,7 @@ const Home = () => {
                 })
                 .catch(err => {
                     console.log(err);
+                    message.error(`${err}`);
                     setLoading(false);
                 });
         }
@@ -67,6 +69,16 @@ const Home = () => {
     const title = useFormInput('')
     const deleteBook = id =>{
         console.log(id)
+        setLoading(true);
+        axios.get('https://ireportbackend.herokuapp.com/deletebook/'+ id)
+            .then(res => {
+                message.success(res.data.message);
+                getBooks();
+            })
+            .catch(err => {
+                message.error(`${err}`);
+                setLoading(false);
+            })
     }
     return (
         <>
