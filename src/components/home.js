@@ -8,6 +8,18 @@ const Home = () => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [books, setBooks] = useState([]);
     const [selectedMenuItem, setSelectedMenuItem] = useState('1');
+    const useFormInput = (initialValue) => {
+        const [value, setValue] = useState(initialValue)
+        function handleChange(e) {
+            setValue(e.target.value)
+        }
+        return {
+            value,
+            onChange: handleChange
+        }
+    }
+    const author = useFormInput('');
+    const title = useFormInput('');
     const handleMenuItemClick = (e) => {
         setIsMenuVisible(false);
         setSelectedMenuItem(e.key);
@@ -38,6 +50,8 @@ const Home = () => {
                 })
                 .then(res => {
                     message.success(res.data.message);
+                    author.value = '';
+                    title.value = '';
                     setLoading(false);
                 })
                 .catch(err => {
@@ -55,18 +69,6 @@ const Home = () => {
             getBooks();
         }
     }, [selectedMenuItem]);
-    const useFormInput = (initialValue) => {
-        const [value, setValue] = useState(initialValue)
-        function handleChange(e) {
-            setValue(e.target.value)
-        }
-        return {
-            value,
-            onChange: handleChange
-        }
-    }
-    const author = useFormInput('')
-    const title = useFormInput('')
     const deleteBook = id =>{
         console.log(id)
         setLoading(true);
