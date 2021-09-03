@@ -93,8 +93,8 @@ const Home = () => {
                         loading?<Spin/>
                         :selectedMenuItem === '1' ?
                             (<form name='addbookform' onSubmit={submitBook} className='bookForm'>
-                                <div className='inputContainer'>Author<Input allowClear size='small' {...author} /></div>
-                                <div className='inputContainer'>Title<Input allowClear size='small' {...title} /></div>
+                                <div className='inputContainer'>Title:<Input allowClear size='small' {...title} /></div>
+                                <div className='inputContainer'>Author:<Input allowClear size='small' {...author} /></div>
                                 <Button type='primary' onClick={submitBook}>Add book</Button>
                             </form>)
                             : selectedMenuItem === '2' ?
