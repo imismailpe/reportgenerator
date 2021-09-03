@@ -62,9 +62,9 @@ const Home = () => {
             <Content style={{ margin: '24px 16px 0', height: '100%' }}>
                 <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                     {
-                        selectedReport === '1' ?
+                        selectedMenuItem === '1' ?
                             showBookForm()
-                            : selectedReport === '2' ?
+                            : selectedMenuItem === '2' ?
                                 books.map(book => {
                                     return (<div>{book.title} - {book.author}</div>)
                                 })
