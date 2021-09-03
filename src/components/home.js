@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, message, Input, Spin } from 'antd';
+import { Layout, message, Input, Spin, Button } from 'antd';
 import HeaderComp from './Header';
 import axios from 'axios';
 const { Header, Content, Footer } = Layout;
@@ -93,9 +93,9 @@ const Home = () => {
                         loading?<Spin/>
                         :selectedMenuItem === '1' ?
                             (<form name='addbookform' onSubmit={submitBook} className='bookForm'>
-                                <label>Author</label><Input {...author} />
-                                <label>Title</label><Input {...title} />
-                                <button type='submit'>Add book</button>
+                                <div className='inputContainer'>Author<Input size='small' {...author} /></div>
+                                <div className='inputContainer'>Title<Input size='small' {...title} /></div>
+                                <Button type='primary' onClick={submitBook}>Add book</Button>
                             </form>)
                             : selectedMenuItem === '2' ?
                                 (<div className='booksContainer'>
