@@ -14,10 +14,10 @@ const MenuComp = (props) => {
             <Menu mode='vertical' defaultSelectedKeys={['1']}
                 style={{ height: '100%' }} theme='dark'>
                 <Menu.Item key="1" icon={<UserOutlined />} onClick={props.handleMenuItemClick}>
-                    Report 1
+                    Add Book
                 </Menu.Item>
                 <Menu.Item key="2" icon={<VideoCameraOutlined />} onClick={props.handleMenuItemClick}>
-                    Report 2
+                    View Books
                 </Menu.Item>
                 <Menu.Item key="3" icon={<UploadOutlined />} onClick={props.handleMenuItemClick}>
                     Report 3
