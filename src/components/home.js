@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, message } from 'antd';
+import { Layout, message, Input } from 'antd';
 import HeaderComp from './Header';
 import axios from 'axios';
 const { Header, Content, Footer } = Layout;
@@ -24,36 +24,37 @@ const Home = () => {
     }
     const submitBook = async (e) => {
         e.preventDefault();
-        const author = e.target.author.value;
-        const title = e.target.title.value;
-        if(author && title){
-            axios.post('https://ireportbackend.herokuapp.com/books',
-            {
-                author, title
-            })
-            .then(res => {
-                message.success(res.data);
-            })
-            .catch(err => console.log(err));
+        if (author.value && title.value) {
+            axios.post('https://ireportbackend.herokuapp.com/addbook',
+                {
+                    author: author.value, title: title.value
+                })
+                .then(res => {
+                    message.success(res.data);
+                })
+                .catch(err => console.log(err));
         }
-        else{
+        else {
             message.warn('Enter all fields');
         }
-    }
-    const showBookForm = () => {
-        return (
-            <form name='addbookform' onSubmit={submitBook}>
-                <label>Author</label><input type='text' name='author' />
-                <label>Title</label><input type='text' name='title' />
-                <input type='submit'>Add book</input>
-            </form>
-        )
     }
     useEffect(() => {
         if (selectedMenuItem === '2') {
             getBooks();
         }
     }, [selectedMenuItem]);
+    const useFormInput = (initialValue) => {
+        const [value, setValue] = useState(initialValue)
+        function handleChange(e) {
+            setValue(e.target.value)
+        }
+        return {
+            value,
+            onChange: handleChange
+        }
+    }
+    const author = useFormInput('')
+    const title = useFormInput('')
     return (
         <>
             <Header className="site-layout-sub-header-background" style={{ padding: 0 }}>
@@ -63,7 +64,11 @@ const Home = () => {
                 <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                     {
                         selectedMenuItem === '1' ?
-                            showBookForm()
+                            (<form name='addbookform' onSubmit={submitBook}>
+                                <label>Author</label><Input {...author} />
+                                <label>Title</label><Input {...title} />
+                                <button type='submit'>Add book</button>
+                            </form>)
                             : selectedMenuItem === '2' ?
                                 books.map(book => {
                                     return (<div>{book.title} - {book.author}</div>)
