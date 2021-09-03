@@ -69,7 +69,7 @@ const Home = () => {
             getBooks();
         }
     }, [selectedMenuItem]);
-    const deleteBook = id =>{
+    const deleteBook = async (id) =>{
         console.log(id)
         setLoading(true);
         axios.delete('https://ireportbackend.herokuapp.com/deletebook/'+ id)
