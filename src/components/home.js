@@ -70,7 +70,7 @@ const Home = () => {
     const deleteBook = id =>{
         console.log(id)
         setLoading(true);
-        axios.get('https://ireportbackend.herokuapp.com/deletebook/'+ id)
+        axios.delete('https://ireportbackend.herokuapp.com/deletebook/'+ id)
             .then(res => {
                 message.success(res.data.message);
                 getBooks();
