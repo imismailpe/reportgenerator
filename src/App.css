@@ -35,13 +35,24 @@
 }
 .booksContainer{
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+.inputContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+.inputContainer>input{
+  max-width: 500px;
 }
 .bookRow{
   border: 1px dashed gray;
   border-radius: 3px;
   padding: 3px;
   margin: 1px;
+  overflow: auto;
+  box-shadow: 3px 3px 3px #f1cdf5;
 }
 .deleteBookButton{
   border: 1px solid red;

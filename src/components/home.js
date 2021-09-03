@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Layout, message, Input, Spin } from 'antd';
+import { Layout, message, Input, Spin, Button } from 'antd';
 import HeaderComp from './Header';
 import axios from 'axios';
 const { Header, Content, Footer } = Layout;
@@ -8,6 +8,18 @@ const Home = () => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [books, setBooks] = useState([]);
     const [selectedMenuItem, setSelectedMenuItem] = useState('1');
+    const useFormInput = (initialValue) => {
+        const [value, setValue] = useState(initialValue)
+        function handleChange(e) {
+            setValue(e.target.value)
+        }
+        return {
+            value,
+            onChange: handleChange
+        }
+    }
+    const author = useFormInput('');
+    const title = useFormInput('');
     const handleMenuItemClick = (e) => {
         setIsMenuVisible(false);
         setSelectedMenuItem(e.key);
@@ -24,6 +36,7 @@ const Home = () => {
             })
             .catch(err => {
                 console.log(err);
+                message.error(`${err}`);
                 setLoading(false);
             })
     }
@@ -37,10 +50,13 @@ const Home = () => {
                 })
                 .then(res => {
                     message.success(res.data.message);
+                    author.value = '';
+                    title.value = '';
                     setLoading(false);
                 })
                 .catch(err => {
                     console.log(err);
+                    message.error(`${err}`);
                     setLoading(false);
                 });
         }
@@ -53,20 +69,18 @@ const Home = () => {
             getBooks();
         }
     }, [selectedMenuItem]);
-    const useFormInput = (initialValue) => {
-        const [value, setValue] = useState(initialValue)
-        function handleChange(e) {
-            setValue(e.target.value)
-        }
-        return {
-            value,
-            onChange: handleChange
-        }
-    }
-    const author = useFormInput('')
-    const title = useFormInput('')
-    const deleteBook = id =>{
+    const deleteBook = async (id) =>{
         console.log(id)
+        setLoading(true);
+        axios.delete('https://ireportbackend.herokuapp.com/deletebook/'+ id)
+            .then(res => {
+                message.success(res.data.message);
+                getBooks();
+            })
+            .catch(err => {
+                message.error(`${err}`);
+                setLoading(false);
+            })
     }
     return (
         <>
@@ -79,9 +93,9 @@ const Home = () => {
                         loading?<Spin/>
                         :selectedMenuItem === '1' ?
                             (<form name='addbookform' onSubmit={submitBook} className='bookForm'>
-                                <label>Author</label><Input {...author} />
-                                <label>Title</label><Input {...title} />
-                                <button type='submit'>Add book</button>
+                                <div className='inputContainer'>Title:<Input allowClear size='small' {...title} /></div>
+                                <div className='inputContainer'>Author:<Input allowClear size='small' {...author} /></div>
+                                <Button type='primary' onClick={submitBook}>Add book</Button>
                             </form>)
                             : selectedMenuItem === '2' ?
                                 (<div className='booksContainer'>
