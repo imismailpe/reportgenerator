@@ -109,7 +109,7 @@ const Home = () => {
                     }
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>ismail</Footer>
+            <Footer style={{ textAlign: 'center' }}>ismail_e</Footer>
         </>
     )
 }
