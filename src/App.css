@@ -73,15 +73,15 @@
   border: 1px dashed gray;
   border-radius: 3px;
   padding: 3px;
-  overflow: auto;
   box-shadow: 3px 3px 3px #e9e6e5;
   position: relative;
   display: grid;
   grid-template-rows: 1fr 1fr 35px;
   grid-template-columns: 1fr;
   justify-content: start;
-  align-items: center;
+  align-items: start;
   gap: 1px;
+  word-break: break-all;
 }
 .deleteBookButton{
   /* border: 1px solid rgb(104, 87, 87);
@@ -96,9 +96,7 @@
 .bookTitle, .bookAuthor{
   justify-self: center;
   font-weight: 500;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;
