@@ -94,7 +94,7 @@
   justify-self: center;
 }
 .bookTitle, .bookAuthor{
-  justify-self: center;
+  justify-self: start;
   font-weight: 500;
 
 }
