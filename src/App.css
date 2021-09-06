@@ -96,6 +96,7 @@
 .bookTitle, .bookAuthor{
   justify-self: center;
   font-weight: 500;
+  text-overflow: ellipsis;
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;
