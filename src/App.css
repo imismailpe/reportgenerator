@@ -48,7 +48,7 @@
 .inputContainer>input{
   max-width: 500px;
 }
-.bookRow{
+.bookBox{
   border: 1px dashed gray;
   border-radius: 3px;
   padding: 3px;
@@ -56,14 +56,25 @@
   overflow: auto;
   box-shadow: 3px 3px 3px #f1cdf5;
   position: relative;
+  display: grid;
+  grid-template-rows: 1fr 1fr 35px;
+  grid-template-columns: 1fr;
+  justify-content: start;
+  align-items: start;
 }
 .deleteBookButton{
-  border: 1px solid red;
+  border: 1px solid rgb(104, 87, 87);
+  background-color: #fa4040;
+  color: #f1cdf5;
   padding: 3px;
   margin: 2px;
   border-radius: 3px;
   cursor: pointer;
-  float: right;
+  width: fit-content;
+  justify-self: center;
+}
+.bookTitle, .bookAuthor{
+  justify-self: start;
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;

@@ -70,7 +70,7 @@ const Home = () => {
             getBooks();
         }
     }, [selectedMenuItem]);
-    const deleteBook = id =>{
+    const deleteBook = async (id) =>{
         console.log(id)
         setLoading(true);
         axios.delete('https://ireportbackend.herokuapp.com/deletebook/'+ id)
@@ -94,15 +94,15 @@ const Home = () => {
                         loading?<Spin/>
                         :selectedMenuItem === '1' ?
                             (<form name='addbookform' onSubmit={submitBook} className='bookForm'>
-                                <div className='inputContainer'><BookOutlined/> Author<Input size='small' {...author} /></div>
-                                <div className='inputContainer'><UserOutlined/> Title<Input size='small' {...title} /></div>
+                                <div className='inputContainer'><BookOutlined/> Title:<Input allowClear size='small' {...title} /></div>
+                                <div className='inputContainer'><UserOutlined/> Author:<Input allowClear size='small' {...author} /></div>
                                 <Button type='primary' onClick={submitBook}>Add book</Button>
                             </form>)
                             : selectedMenuItem === '2' ?
                                 (<div className='booksContainer'>
                                     {
                                         books.map(book => {
-                                            return <div className='bookRow'><span className='deleteBookButton' onClick={()=>deleteBook(book.id)}>delete</span><BookOutlined/>{book.title} <UserOutlined/>{book.author}</div>
+                                            return <div className='bookBox'><div className='bookTitle'><BookOutlined/>{book.title}</div><div className='bookAuthor'><UserOutlined/>{book.author}</div><div className='deleteBookButton' onClick={()=>deleteBook(book.id)}>delete</div></div>
                                         })
                                     }
                                 </div>)
@@ -110,7 +110,7 @@ const Home = () => {
                     }
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>ismail</Footer>
+            <Footer style={{ textAlign: 'center' }}>ismail_e</Footer>
         </>
     )
 }
