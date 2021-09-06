@@ -42,6 +42,8 @@
   justify-content: center;
   align-items: center;
   padding: 4px;
+  max-width: 400px;
+  margin: auto;
 }
 .inputContainer>input{
   max-width: 500px;
@@ -53,6 +55,7 @@
   margin: 1px;
   overflow: auto;
   box-shadow: 3px 3px 3px #f1cdf5;
+  position: relative;
 }
 .deleteBookButton{
   border: 1px solid red;
@@ -60,6 +63,7 @@
   margin: 2px;
   border-radius: 3px;
   cursor: pointer;
+  float: right;
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;

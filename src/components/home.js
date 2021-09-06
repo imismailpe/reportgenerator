@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Layout, message, Input, Spin, Button } from 'antd';
 import HeaderComp from './Header';
 import axios from 'axios';
+import { BookOutlined, UserOutlined } from '@ant-design/icons';
 const { Header, Content, Footer } = Layout;
 const Home = () => {
     const [loading, setLoading] = useState(false);
@@ -93,15 +94,15 @@ const Home = () => {
                         loading?<Spin/>
                         :selectedMenuItem === '1' ?
                             (<form name='addbookform' onSubmit={submitBook} className='bookForm'>
-                                <div className='inputContainer'>Author<Input size='small' {...author} /></div>
-                                <div className='inputContainer'>Title<Input size='small' {...title} /></div>
+                                <div className='inputContainer'><BookOutlined/> Author<Input size='small' {...author} /></div>
+                                <div className='inputContainer'><UserOutlined/> Title<Input size='small' {...title} /></div>
                                 <Button type='primary' onClick={submitBook}>Add book</Button>
                             </form>)
                             : selectedMenuItem === '2' ?
                                 (<div className='booksContainer'>
                                     {
                                         books.map(book => {
-                                            return <div className='bookRow'>{book.title} - {book.author}<span className='deleteBookButton' onClick={()=>deleteBook(book.id)}>delete</span></div>
+                                            return <div className='bookRow'><span className='deleteBookButton' onClick={()=>deleteBook(book.id)}>delete</span><BookOutlined/>{book.title} <UserOutlined/>{book.author}</div>
                                         })
                                     }
                                 </div>)
