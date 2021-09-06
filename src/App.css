@@ -96,6 +96,8 @@
 .bookTitle, .bookAuthor{
   justify-self: center;
   font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
 /* #components-layout-demo-responsive .logo {
