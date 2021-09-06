@@ -32,6 +32,17 @@
 }
 .ant-layout-header{
   background-image: linear-gradient(to right, #89067e, #73067f, #5a0b7f, #3d0f7e, #09137c);
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  box-shadow: 0 0 5px #89067e;
+}
+.ant-layout-footer{
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  z-index: 500;
+  box-shadow: 0 0 5px #cfcfcf;
 }
 .booksContainer{
   display: grid;
@@ -61,20 +72,20 @@
   grid-template-columns: 1fr;
   justify-content: start;
   align-items: start;
+  gap: 1px;
 }
 .deleteBookButton{
   border: 1px solid rgb(104, 87, 87);
   background-color: #fa4040;
   color: #f1cdf5;
   padding: 3px;
-  margin: 2px;
   border-radius: 3px;
   cursor: pointer;
   width: fit-content;
   justify-self: center;
 }
 .bookTitle, .bookAuthor{
-  justify-self: start;
+  justify-self: center;
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;
