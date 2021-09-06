@@ -88,8 +88,8 @@ const Home = () => {
             <Header className="site-layout-sub-header-background" style={{ padding: 0 }}>
                 <HeaderComp isMenuVisible={isMenuVisible} toggleMenu={toggleMenu} handleMenuItemClick={handleMenuItemClick} />
             </Header>
-            <Content style={{ margin: '24px 16px 0', height: '100%' }}>
-                <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+            <Content style={{ margin: '10px 10px 0', height: '100%' }}>
+                <div className="site-layout-background" style={{ padding: 10, minHeight: 360 }}>
                     {
                         loading?<Spin/>
                         :selectedMenuItem === '1' ?
@@ -102,7 +102,7 @@ const Home = () => {
                                 (<div className='booksContainer'>
                                     {
                                         books.map(book => {
-                                            return <div className='bookBox'><div className='bookTitle'><BookOutlined/>{book.title}</div><div className='bookAuthor'><UserOutlined/>{book.author}</div><div className='deleteBookButton' onClick={()=>deleteBook(book.id)}>delete</div></div>
+                                            return <div key={book.id} className='bookBox'><div className='bookTitle'><BookOutlined/>{book.title}</div><div className='bookAuthor'><UserOutlined/>{book.author}</div><Button type='primary' size='small' danger className='deleteBookButton' onClick={()=>deleteBook(book.id)}>Delete</Button></div>
                                         })
                                     }
                                 </div>)

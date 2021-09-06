@@ -31,6 +31,8 @@
   margin: auto;
 }
 .ant-layout-header{
+  height: 50px;
+  line-height: 50px;
   background-image: linear-gradient(to right, #89067e, #73067f, #5a0b7f, #3d0f7e, #09137c);
   position: sticky;
   top: 0;
@@ -38,7 +40,7 @@
   box-shadow: 0 0 5px #89067e;
 }
 .ant-layout-footer{
-  padding: 10px;
+  padding: 5px;
   position: sticky;
   bottom: 0;
   z-index: 500;
@@ -47,6 +49,7 @@
 .booksContainer{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 3px;
 }
 .inputContainer{
   display: flex;
@@ -60,10 +63,10 @@
   max-width: 500px;
 }
 .bookBox{
+  background-color: #f5eaea;
   border: 1px dashed gray;
   border-radius: 3px;
   padding: 3px;
-  margin: 1px;
   overflow: auto;
   box-shadow: 3px 3px 3px #f1cdf5;
   position: relative;
@@ -71,21 +74,22 @@
   grid-template-rows: 1fr 1fr 35px;
   grid-template-columns: 1fr;
   justify-content: start;
-  align-items: start;
+  align-items: center;
   gap: 1px;
 }
 .deleteBookButton{
-  border: 1px solid rgb(104, 87, 87);
+  /* border: 1px solid rgb(104, 87, 87);
   background-color: #fa4040;
   color: #f1cdf5;
   padding: 3px;
   border-radius: 3px;
-  cursor: pointer;
+  cursor: pointer; */
   width: fit-content;
   justify-self: center;
 }
 .bookTitle, .bookAuthor{
   justify-self: center;
+  font-weight: 500;
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;
