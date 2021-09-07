@@ -103,7 +103,10 @@
 .bookTitle, .bookAuthor{
   justify-self: start;
   font-weight: 500;
-
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* #components-layout-demo-responsive .logo {
   height: 32px;
