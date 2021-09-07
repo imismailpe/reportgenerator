@@ -102,7 +102,7 @@ const Home = () => {
                                 (<div className='booksContainer'>
                                     {
                                         books.map(book => {
-                                            return <div key={book.id} className='bookBox container-ellipsis'><div className='bookTitle'><BookOutlined/>{book.title}</div><div className='bookAuthor'><UserOutlined/>{book.author}</div><Button type='primary' size='small' danger className='deleteBookButton' onClick={()=>deleteBook(book.id)}>Delete</Button></div>
+                                            return <div key={book.id} className='bookBox'><div className='bookTitle'><BookOutlined/>{book.title}</div><div className='bookAuthor'><UserOutlined/>{book.author}</div><Button type='primary' size='small' danger className='deleteBookButton' onClick={()=>deleteBook(book.id)}>Delete</Button></div>
                                         })
                                     }
                                 </div>)
