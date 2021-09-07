@@ -83,7 +83,7 @@
   box-shadow: 3px 3px 3px #e9e6e5;
   position: relative;
   display: grid;
-  grid-template-rows: 1fr 1fr 35px;
+  grid-template-rows: 1fr 1fr 30px;
   grid-template-columns: 1fr;
   justify-content: start;
   align-items: start;
