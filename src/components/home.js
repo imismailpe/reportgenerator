@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Layout, message, Input, Spin, Button } from 'antd';
 import HeaderComp from './Header';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBooksRequest } from '../store/actions/actions';
 import { BookOutlined, UserOutlined } from '@ant-design/icons';
+
 const { Header, Content, Footer } = Layout;
 const Home = () => {
+    const dispatch = useDispatch();
+    const dataStore = useSelector(state => state.dataR.toJS());
     const [loading, setLoading] = useState(false);
     const [isMenuVisible, setIsMenuVisible] = useState(false);
-    const [books, setBooks] = useState([]);
+    // const [books, setBooks] = useState([]);
     const [selectedMenuItem, setSelectedMenuItem] = useState('1');
     const useFormInput = (initialValue) => {
         const [value, setValue] = useState(initialValue)
@@ -29,17 +34,7 @@ const Home = () => {
         setIsMenuVisible(!isMenuVisible);
     }
     const getBooks = async () => {
-        setLoading(true);
-        axios.get('https://ireportbackend.herokuapp.com/books')
-            .then(res => {
-                setBooks(res.data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.log(err);
-                message.error(`${err}`);
-                setLoading(false);
-            })
+        dispatch(getBooksRequest());
     }
     const submitBook = async (e) => {
         e.preventDefault();
@@ -83,6 +78,7 @@ const Home = () => {
                 setLoading(false);
             })
     }
+    console.log('dataStore', dataStore)
     return (
         <>
             <Header className="site-layout-sub-header-background" style={{ padding: 0 }}>
@@ -91,7 +87,7 @@ const Home = () => {
             <Content style={{ margin: '10px 10px 0', height: '100%' }}>
                 <div className="site-layout-background" style={{ padding: 10, minHeight: 360 }}>
                     {
-                        loading?<Spin/>
+                        loading || dataStore.isFetching ?<Spin/>
                         :selectedMenuItem === '1' ?
                             (<form name='addbookform' onSubmit={submitBook} className='bookForm'>
                                 <div className='inputContainer'><BookOutlined/> Title:<Input allowClear size='small' {...title} /></div>
@@ -101,7 +97,7 @@ const Home = () => {
                             : selectedMenuItem === '2' ?
                                 (<div className='booksContainer'>
                                     {
-                                        books.map(book => {
+                                        dataStore.books.map(book => {
                                             return <div key={book.id} className='bookBox'><div className='bookTitle'><BookOutlined/>{book.title}</div><div className='bookAuthor'><UserOutlined/>{book.author}</div><Button type='primary' size='small' danger className='deleteBookButton' onClick={()=>deleteBook(book.id)}>Delete</Button></div>
                                         })
                                     }
